@@ -19,31 +19,30 @@ class Walker {
   }
 
   walk() {
-    let choice = this._noise.noise2D(new Date().getTime() / 10, 10)
+    let choiceX = this._noise.noise2D(new Date().getTime() / 1000, 10)
+    let choiceY = this._noise.noise2D(new Date().getTime() / 1000, 8)
 
-    if (choice <= -0.5) {
-      this._x ++;
-    } else if (choice <= 0) {
+    if (choiceX <= -1/3) {
       this._x --;
-    } else if (choice <= 0.5) {
-      this._y ++;
-    } else if (choice <= 1) {
+    } else if (choiceX >= 1/3){
+      this._x ++;
+    }
+
+    if (choiceY <= -1/3) {
       this._y --;
+    } else if (choiceY >= 1/3){
+      this._y ++;
     }
 
     if (this._x < 0) {
       this._x = 0;
+    } else if (this._x > this._canvas.canvas.width / this._canvas.ratio) {
+      this._x = this._canvas.canvas.width / this._canvas.ratio;
     }
 
     if (this._y < 0) {
       this._y = 0;
-    }
-
-    if (this._x > this._canvas.canvas.width / this._canvas.ratio) {
-      this._x = this._canvas.canvas.width / this._canvas.ratio;
-    }
-
-    if (this._y > this._canvas.canvas.height / this._canvas.ratio) {
+    } else if (this._y > this._canvas.canvas.height / this._canvas.ratio) {
       this._y = this._canvas.canvas.height / this._canvas.ratio;
     }
 
