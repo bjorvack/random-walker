@@ -10,17 +10,41 @@ class Walker {
     ];
   }
 
-  walk() {
-    let choice = this._noise.noise2D(new Date().getTime() / 100, 10)
+  get x() {
+    return this._x;
+  }
 
-    if (choice < -0.5) {
+  get y() {
+    return this._y;
+  }
+
+  walk() {
+    let choice = this._noise.noise2D(new Date().getTime() / 10, 10)
+
+    if (choice <= -0.5) {
       this._x ++;
-    } else if (choice < 0) {
+    } else if (choice <= 0) {
       this._x --;
-    } else if (choice < 0.5) {
+    } else if (choice <= 0.5) {
       this._y ++;
-    } else if (choice < 1) {
+    } else if (choice <= 1) {
       this._y --;
+    }
+
+    if (this._x < 0) {
+      this._x = 0;
+    }
+
+    if (this._y < 0) {
+      this._y = 0;
+    }
+
+    if (this._x > this._canvas.canvas.width / this._canvas.ratio) {
+      this._x = this._canvas.canvas.width / this._canvas.ratio;
+    }
+
+    if (this._y > this._canvas.canvas.height / this._canvas.ratio) {
+      this._y = this._canvas.canvas.height / this._canvas.ratio;
     }
 
     this._path.push([this._x, this._y]);
