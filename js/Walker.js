@@ -50,6 +50,7 @@ class Walker {
   }
 
   draw() {
+    this._canvas.context.lineWidth=4;
     this._canvas.context.fillStyle="#030303";
     this._canvas.context.beginPath();
     this._canvas.context.moveTo(this._path[0][0], this._path[0][1]);
