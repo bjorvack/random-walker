@@ -26,7 +26,7 @@ class Canvas {
     setInterval(function() {
       this.clear();
       func();
-    }.bind(this));
+    }.bind(this), 60 / 1000);
   }
 
   setup () {

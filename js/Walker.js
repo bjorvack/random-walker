@@ -19,8 +19,8 @@ class Walker {
   }
 
   walk() {
-    let choiceX = this._noise.noise2D(new Date().getTime() / 1000, 10)
-    let choiceY = this._noise.noise2D(new Date().getTime() / 1000, 8)
+    let choiceX = this._noise.noise2D(new Date().getTime() / 10000, 10)
+    let choiceY = this._noise.noise2D(new Date().getTime() / 10000, 100)
 
     if (choiceX <= -1/3) {
       this._x --;
@@ -34,17 +34,19 @@ class Walker {
       this._y ++;
     }
 
-    if (this._x < 0) {
-      this._x = 0;
-    } else if (this._x > this._canvas.canvas.width / this._canvas.ratio) {
-      this._x = this._canvas.canvas.width / this._canvas.ratio;
+    if (this._x < 10) {
+      this._x = 10;
+    } else if (this._x > (this._canvas.canvas.width -10 * this._canvas.ratio) / this._canvas.ratio) {
+      this._x = (this._canvas.canvas.width -10 * this._canvas.ratio) / this._canvas.ratio;
     }
 
-    if (this._y < 0) {
-      this._y = 0;
-    } else if (this._y > this._canvas.canvas.height / this._canvas.ratio) {
-      this._y = this._canvas.canvas.height / this._canvas.ratio;
+    if (this._y < 10) {
+      this._y = 10;
+    } else if (this._y > (this._canvas.canvas.height -10 * this._canvas.ratio) / this._canvas.ratio) {
+      this._y = (this._canvas.canvas.height -10 * this._canvas.ratio) / this._canvas.ratio;
     }
+
+    console.log(this._x, this._y, this._canvas.canvas.width, this._canvas.canvas.width);
 
     this._path.push([this._x, this._y]);
   }
