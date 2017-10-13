@@ -19,8 +19,8 @@ class Walker {
   }
 
   walk() {
-    let choiceX = this._noise.noise2D(new Date().getTime() / 10000, 10)
-    let choiceY = this._noise.noise2D(new Date().getTime() / 10000, 100)
+    let choiceX = this._noise.noise2D(new Date().getTime() / 1000, 10)
+    let choiceY = this._noise.noise2D(new Date().getTime() / 1000, 100000)
 
     if (choiceX <= -1/3) {
       this._x --;
@@ -46,8 +46,6 @@ class Walker {
       this._y = (this._canvas.canvas.height -10 * this._canvas.ratio) / this._canvas.ratio;
     }
 
-    console.log(this._x, this._y, this._canvas.canvas.width, this._canvas.canvas.width);
-
     this._path.push([this._x, this._y]);
   }
 
@@ -63,6 +61,6 @@ class Walker {
     this._canvas.context.stroke();
 
     this._canvas.context.fillStyle="#61ff59";
-    this._canvas.context.fillRect(this._x - 1, this._y -1, 3, 3);
+    this._canvas.context.fillRect(this._x - 5, this._y -5, 11, 11);
   }
 }

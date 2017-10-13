@@ -1,12 +1,17 @@
-let canvas = new Canvas(document.getElementById('canvas'))
-let walker = new Walker(canvas, document.body.clientWidth / 2, document.body.clientHeight / 2);
+document.addEventListener("DOMContentLoaded", function(event) {
+  // Setup Objects
+  let canvas = new Canvas(document.getElementById('canvas'))
+  let walker = new Walker(canvas, document.body.clientWidth / 2, document.body.clientHeight / 2);
 
-setInterval(function () {
-  walker.walk();
-})
+  // Run logic
+  setInterval(function () {
+    walker.walk();
+  })
 
-canvas.draw(
-  function () {
-    walker.draw();
-  }
-);
+  // Add draw logic to Canvas object
+  canvas.draw(
+    function () {
+      walker.draw();
+    }
+  );
+});
