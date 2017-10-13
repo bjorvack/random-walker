@@ -1,6 +1,6 @@
 class Walker {
   constructor (canvas, x, y) {
-    this._noise = new SimplexNoise();
+    this._noise = new Perlin();
     this._canvas = canvas;
     this._x = x;
     this._y = y;
@@ -19,18 +19,18 @@ class Walker {
   }
 
   walk() {
-    let choiceX = this._noise.noise2D(new Date().getTime() / 1000, 10)
-    let choiceY = this._noise.noise2D(new Date().getTime() / 1000, 100000)
+    let choiceX = this._noise.noise(new Date().getTime() / 1000, 10)
+    let choiceY = this._noise.noise(new Date().getTime() / 1000, 100000)
 
-    if (choiceX <= -1/3) {
+    if (choiceX <= 1/3) {
       this._x --;
-    } else if (choiceX >= 1/3){
+    } else if (choiceX >= 2/3){
       this._x ++;
     }
 
-    if (choiceY <= -1/3) {
+    if (choiceY <= 1/3) {
       this._y --;
-    } else if (choiceY >= 1/3){
+    } else if (choiceY >= 2/3){
       this._y ++;
     }
 
@@ -47,6 +47,8 @@ class Walker {
     }
 
     this._path.push([this._x, this._y]);
+
+    console.log(choiceX, choiceY, this._x, this._y);
   }
 
   draw() {
