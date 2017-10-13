@@ -1,3 +1,6 @@
+/**
+ * Creates a random number but can take a seed value
+ */
 class Alea {
   constructor (seed = '') {
     this._seed = seed;
@@ -53,6 +56,9 @@ class Alea {
   }
 }
 
+/**
+ * Creates Perlin noise
+ */
 class Perlin {
   constructor (seed = '') {
     this._alea = new Alea(seed);
@@ -86,8 +92,8 @@ class Perlin {
     this._perlin_array = [];
   }
 
-  noiseDetail (lod, falloff) {
-    if (Math.floor(lod) > 0) this._perlin_octaves = Math.floor(lod);
+  noiseDetail (levelOfDetail, falloff) {
+    if (Math.floor(levelOfDetail) > 0) this._perlin_octaves = Math.floor(levelOfDetail);
     if (falloff != undefined && falloff > 0) this._perlin_amplitude_falloff = falloff;
   }
 
